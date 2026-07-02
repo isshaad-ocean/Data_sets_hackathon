@@ -1,0 +1,46 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# ===========================
+# Environment / Secrets
+# ===========================
+.env
+.env.*
+kaggle.json
+*.key
+
+# ===========================
+# Large dataset raw blobs
+# (tracked via Git LFS or download scripts)
+# ===========================
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.parquet
+*.arrow
+*.pkl
+*.bin
+*.h5
+*.hdf5
+
+# ===========================
+# OS / Editor
+# ===========================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

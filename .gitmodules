@@ -1,0 +1,3 @@
+[submodule "problem-1-intelligent-document-processor/data/sroie"]
+	path = problem-1-intelligent-document-processor/data/sroie
+	url = https://github.com/zzzDavid/ICDAR-2019-SROIE
