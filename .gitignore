@@ -25,16 +25,15 @@ kaggle.json
 # Large dataset raw blobs
 # (tracked via Git LFS or download scripts)
 # ===========================
-*.zip
-*.tar.gz
 *.tar.bz2
 *.tar.xz
-*.parquet
-*.arrow
-*.pkl
 *.bin
 *.h5
 *.hdf5
+
+# EXCEPTION: zipped-datasets/ folder should be tracked (via Git LFS)
+!zipped-datasets/
+!zipped-datasets/*.zip
 
 # ===========================
 # OS / Editor
