@@ -1,0 +1,29 @@
+﻿# Hyderabad AI Hackathon 2026 — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Dataset access
+datasets>=2.14.0
+huggingface_hub>=0.17.0
+kaggle>=1.5.16
+
+# Data manipulation
+pandas>=2.0.0
+numpy>=1.24.0
+pyarrow>=12.0.0
+
+# Networking & downloads
+requests>=2.31.0
+tqdm>=4.65.0
+
+# Challenge-specific (install only what you need)
+# Challenge 1 - Crypto Trading
+# pandas-ta>=0.3.14b0   # Technical indicators (pip install pandas-ta)
+
+# Challenge 2 - Network Anomaly
+# scikit-learn>=1.3.0   # ML models
+
+# Challenge 3 - KYC Auditor
+# opensanctions>=3.0.0  # OpenSanctions Python SDK (optional)
+
+# Challenge 4 - Contract Risk
+# transformers>=4.30.0  # LLM-based clause analysis
