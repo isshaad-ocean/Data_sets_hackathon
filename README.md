@@ -1,38 +1,27 @@
-# Hackathon Datasets — Hyderabad AI Hackathon 2026
+﻿# Hackathon Datasets — Hyderabad AI Hackathon 2026
 
-Datasets for all problem statements, organized by challenge.
-
----
-
-## 📖 Start Here
-
-| Document | Purpose |
-|----------|---------|
-| 📘 [PARTICIPANTS_GUIDE.md](./PARTICIPANTS_GUIDE.md) | **How to download & use datasets** — read this first |
-| 📊 [DATASET_CATALOG.md](./DATASET_CATALOG.md) | All dataset sizes, licenses & credential requirements |
+Datasets for all 4 challenge problem statements, organized by challenge.
 
 ---
 
-## Problem Folders
+## Challenge Folders
 
-| Problem | Folder | Datasets Included |
-|---------|--------|------------------|
-| **1** | `problem-1-intelligent-document-processor/` | SROIE 2019, CORD v2, FUNSD, Invoice NER |
-| **2** | `problem-2-conversational-analytics/` | Spider, WikiTableQuestions, Chinook DB |
-| **3** | `problem-3-network-anomaly-detection/` | NSL-KDD, UNSW-NB15, LogHub |
-| **4** | `problem-4-contract-risk-analyzer/` | CUAD, ContractNLI, LEDGAR |
-| **5** | `problem-5-synthetic-data-generator/` | Adult Census, Credit Card Fraud, Diabetes |
-| **6** | `problem-6-visual-inspection/` | MVTec AD, NEU Surface Defect, DAGM |
-| **7** | `problem-7-misinformation-detector/` | LIAR, FEVER, FakeNewsNet |
-| **8** | `problem-8-compliance-checker/` | EUR-Lex, PrivacyQA, GDPR Text, OPP-115 |
+| Challenge | Folder | Datasets Included |
+|-----------|--------|------------------|
+| **Challenge 1** — AI Agent Crypto Trading | `challenge-1-crypto-trading-agent/` | CryptoSentiment, Kraken OHLCV, Fear & Greed Index, Crypto News |
+| **Challenge 2** — Network Anomaly Root-Cause | `challenge-2-network-anomaly-rca/` | NSL-KDD, UNSW-NB15, LogHub (HDFS/BGL) |
+| **Challenge 3** — Continuous KYC Autonomous Auditor | `challenge-3-kyc-autonomous-auditor/` | OpenSanctions, OFAC SDN, EUR-Lex, PrivacyQA, GDPR Text, OPP-115 |
+| **Challenge 4** — Contract & SOW Risk Analyzer | `challenge-4-contract-sow-risk-analyzer/` | CUAD, ContractNLI, LEDGAR |
+
+> **Note:** Unrelated problem datasets are archived in the `ignore/` folder and are not part of this hackathon.
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone (with submodules for Problem 1)
-git clone --recurse-submodules https://github.com/isshaad-ocean/Data_sets_hackathon.git
+# Clone the repository
+git clone https://github.com/isshaad-ocean/Data_sets_hackathon.git
 cd Data_sets_hackathon
 
 # Pull large files (Git LFS)
@@ -43,22 +32,18 @@ git lfs pull
 pip install datasets huggingface_hub kaggle
 ```
 
-Then read [PARTICIPANTS_GUIDE.md](./PARTICIPANTS_GUIDE.md) for your specific problem.
+Then read [PARTICIPANTS_GUIDE.md](./PARTICIPANTS_GUIDE.md) for your specific challenge.
 
 ---
 
 ## Credential Requirements Summary
 
-| Problem | Kaggle API | Git LFS | Other |
-|---------|-----------|---------|-------|
-| P1 — Intelligent Document Processor | ✅ Required | ✅ Required | Git submodule |
-| P2 — Conversational Analytics | ❌ Not needed | ❌ Not needed | — |
-| P3 — Network Anomaly Detection | ✅ Required | ❌ Not needed | — |
-| P4 — Contract Risk Analyzer | ❌ Not needed | ❌ Not needed | — |
-| P5 — Synthetic Data Generator | ✅ Required | ❌ Not needed | — |
-| P6 — Visual Inspection | ✅ Required | ❌ Not needed | — |
-| P7 — Misinformation Detector | ❌ Not needed | ❌ Not needed | — |
-| P8 — Compliance Checker | ❌ Not needed | ❌ Not needed | — |
+| Challenge | Kaggle API | Login Required |
+|-----------|-----------|----------------|
+| C1 — AI Agent Crypto Trading | Optional | ❌ None (Zenodo/CryptoDataDownload are free) |
+| C2 — Network Anomaly Root-Cause | ✅ Required | Kaggle (NSL-KDD, UNSW-NB15) |
+| C3 — Continuous KYC Auditor | ❌ Not needed | ❌ None |
+| C4 — Contract & SOW Risk Analyzer | ❌ Not needed | ❌ None |
 
 ---
 

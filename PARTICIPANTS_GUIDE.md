@@ -1,157 +1,112 @@
-# 🚀 Participants Dataset Guide — Hyderabad AI Hackathon 2026
+﻿# Participants Dataset Guide — Hyderabad AI Hackathon 2026
 
-This guide explains **exactly how to download and access datasets** for each problem statement.
-Follow only the section for your assigned problem.
+This guide explains exactly how to download and access datasets for each of the 4 challenge problem statements.
+Follow only the section for your assigned challenge.
 
 ---
 
-## ⚙️ One-Time Setup (Do This First — Everyone)
+## One-Time Setup (Everyone)
 
 ### Step 1 — Clone the Repository
 ```bash
-# Clone with submodules (required for Problem 1 SROIE dataset)
-git clone --recurse-submodules https://github.com/isshaad-ocean/Data_sets_hackathon.git
+git clone https://github.com/isshaad-ocean/Data_sets_hackathon.git
 cd Data_sets_hackathon
 ```
 
-### Step 2 — Install Git LFS (required for large binary files)
+### Step 2 — Install Git LFS
 ```bash
-# Install Git LFS
 git lfs install
-git lfs pull    # Download large files tracked by LFS
-```
-
-### Step 3 — Install Python dependencies
-```bash
-pip install datasets huggingface_hub kaggle
-```
-
----
-
-## 📁 Problem Folders
-
-| Problem | Folder Name |
-|---------|-------------|
-| 1 | `problem-1-intelligent-document-processor/` |
-| 2 | `problem-2-conversational-analytics/` |
-| 3 | `problem-3-network-anomaly-detection/` |
-| 4 | `problem-4-contract-risk-analyzer/` |
-| 5 | `problem-5-synthetic-data-generator/` |
-| 6 | `problem-6-visual-inspection/` |
-| 7 | `problem-7-misinformation-detector/` |
-| 8 | `problem-8-compliance-checker/` |
-
----
-
----
-
-## 🔖 Problem 1 — Intelligent Document Processor
-
-**Datasets:** SROIE 2019, CORD v2, FUNSD, Invoice NER
-
-### Prerequisites
-| Requirement | Details |
-|-------------|---------|
-| Git LFS | Required for CORD v2 (2.2 GB) |
-| Kaggle API | Required for Invoice NER |
-
-### Download Steps
-
-**Option A — Windows PowerShell**
-```powershell
-cd problem-1-intelligent-document-processor
-.\download.ps1
-```
-
-**Option B — Linux / Mac / WSL**
-```bash
-cd problem-1-intelligent-document-processor
-bash download.sh
-```
-
-**Option C — Manual (dataset by dataset)**
-```bash
-# SROIE 2019 (already in repo as submodule)
-git submodule update --init --recursive
-
-# CORD v2 (Git LFS — auto-downloaded on clone)
 git lfs pull
-
-# FUNSD (already in repo)
-ls data/funsd/dataset/
-
-# Invoice NER (Kaggle required)
-kaggle datasets download -d nikitpatel/invoice-ner-dataset \
-  -p data/invoice_ner --unzip
 ```
 
-### What You Get
-```
-data/
-├── sroie/          → 1,000 receipt images + OCR .txt annotations
-├── cord/           → 11K receipts as .arrow parquet files
-├── funsd/dataset/
-│   ├── training_data/annotations/*.json
-│   └── training_data/images/*.png
-└── invoice_ner/
-    └── converted_invoice_dataset.xlsx
+### Step 3 — Install Python Dependencies
+```bash
+pip install datasets huggingface_hub kaggle requests pandas
 ```
 
-### Kaggle Setup
-1. Go to https://www.kaggle.com/settings → API → **Create New Token**
-2. Move downloaded file: `mv ~/Downloads/kaggle.json ~/.kaggle/kaggle.json`
-3. On Windows: `Move-Item "$env:USERPROFILE\Downloads\kaggle.json" "$env:USERPROFILE\.kaggle\kaggle.json"`
+---
+
+## Challenge Folders
+
+| Challenge | Folder |
+|-----------|--------|
+| C1 — AI Agent Crypto Trading | `challenge-1-crypto-trading-agent/` |
+| C2 — Network Anomaly Root-Cause | `challenge-2-network-anomaly-rca/` |
+| C3 — Continuous KYC Auditor | `challenge-3-kyc-autonomous-auditor/` |
+| C4 — Contract & SOW Risk | `challenge-4-contract-sow-risk-analyzer/` |
 
 ---
 
 ---
 
-## 🔖 Problem 2 — Conversational Analytics
+## Challenge 1 — AI Agent Creation Platform for Autonomous Crypto Trading
 
-**Datasets:** Spider 1.0 (Text-to-SQL), WikiTableQuestions, Chinook SQLite DB
+**Datasets:** Kraken OHLCV, CryptoSentiment (14 coins), Crypto News, Fear & Greed Index
 
 ### Prerequisites
 | Requirement | Details |
 |-------------|---------|
-| None | All datasets are freely accessible — no login required |
+| None | Zenodo and CryptoDataDownload are free — no login required |
+| Kaggle API | Optional — for additional Kaggle crypto datasets |
 
 ### Download Steps
-```bash
-cd problem-2-conversational-analytics
 
-# All datasets are already in the repo — just use them directly!
-ls data/spider/             # Spider text-to-SQL benchmark
-ls data/wikitablequestions/ # NL questions over tables
-ls data/chinook/            # Chinook business SQLite database
+```bash
+cd challenge-1-crypto-trading-agent
+
+# Option A — Zenodo CryptoSentiment (no login needed)
+python -c "
+import urllib.request, os
+os.makedirs('data/sentiment', exist_ok=True)
+urllib.request.urlretrieve(
+    'https://zenodo.org/records/7684409/files/crypto_sentiment_dataset.zip',
+    'data/sentiment/crypto_sentiment.zip'
+)
+print('Downloaded CryptoSentiment')
+"
+
+# Option B — Kraken OHLCV CSVs (no login needed)
+# Visit: https://cryptodatadownload.com/data/kraken/
+# Download BTC/USD, ETH/USD daily/hourly CSVs and place in data/ohlcv/
+
+# Option C — Kaggle datasets (requires kaggle.json)
+kaggle datasets download -d mczielinski/bitcoin-historical-data -p data/ohlcv/ --unzip
+kaggle datasets download -d oliviervha/crypto-news -p data/sentiment/ --unzip
 ```
 
 ### What You Get
 ```
-data/
-├── spider/
-│   ├── train_spider.json   → Training NL-SQL pairs
-│   ├── dev.json            → Validation set
-│   └── tables.json         → DB schema definitions
-├── wikitablequestions/
-│   └── *.tsv               → Questions + table data
-└── chinook/
-    └── Chinook_Sqlite.sqlite → Ready-to-query SQLite business DB
+challenge-1-crypto-trading-agent/data/
+├── ohlcv/
+│   └── Kraken_BTCUSD_d.csv     → Daily OHLCV (timestamp, open, high, low, close, volume)
+├── sentiment/
+│   └── crypto_sentiment.zip    → 14-coin sentiment scores (FinBERT, date, score, source)
+└── indicators/
+    └── (generate via pandas-ta — see Quick Start below)
 ```
 
-### Quick Start — Query the Chinook DB
+### Quick Start
 ```python
-import sqlite3
-conn = sqlite3.connect("data/chinook/Chinook_Sqlite.sqlite")
-cursor = conn.cursor()
-cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-print("Tables:", cursor.fetchall())
+import pandas as pd
+import pandas_ta as ta
+
+# Load OHLCV
+df = pd.read_csv("data/ohlcv/Kraken_BTCUSD_d.csv", skiprows=1)
+df.columns = df.columns.str.lower()
+
+# Add technical indicators
+df.ta.rsi(append=True)       # Relative Strength Index
+df.ta.macd(append=True)      # MACD
+df.ta.bbands(append=True)    # Bollinger Bands
+
+print(df.tail())
 ```
 
 ---
 
 ---
 
-## 🔖 Problem 3 — Network Anomaly Detection
+## Challenge 2 — Network Anomaly Root-Cause Assistant
 
 **Datasets:** NSL-KDD, UNSW-NB15, LogHub (HDFS/BGL system logs)
 
@@ -162,244 +117,51 @@ print("Tables:", cursor.fetchall())
 
 ### Download Steps
 ```bash
-cd problem-3-network-anomaly-detection
+cd challenge-2-network-anomaly-rca
 
-# Kaggle datasets — run after setting up kaggle.json
+# NSL-KDD — Kaggle required
 kaggle datasets download -d hassan06/nslkdd -p data/nsl_kdd --unzip
+
+# UNSW-NB15 — Kaggle required
 kaggle datasets download -d dhoogla/unswnb15 -p data/unsw_nb15 --unzip
 
-# LogHub logs — already in repo
-ls data/loghub/
-```
-
-### What You Get
-```
-data/
-├── nsl_kdd/
-│   ├── KDDTrain+.txt       → Training network traffic (labeled)
-│   └── KDDTest+.txt        → Test set
-├── unsw_nb15/
-│   └── UNSW_NB15_*.csv     → Network flow features + attack labels
-└── loghub/
-    ├── HDFS/HDFS.log       → Hadoop system logs
-    └── BGL/BGL.log         → BlueGene supercomputer logs
-```
-
-### Quick Start
-```python
-import pandas as pd
-df = pd.read_csv("data/nsl_kdd/KDDTrain+.txt", header=None)
-print(df.shape)  # (125,973, 43) — 43 network features
-```
-
----
-
----
-
-## 🔖 Problem 4 — Contract & SOW Risk Analyzer
-
-**Datasets:** CUAD (510 expert-annotated contracts), ContractNLI, LEDGAR
-
-### Prerequisites
-| Requirement | Details |
-|-------------|---------|
-| None | All datasets already in repo — no login required |
-
-### Download Steps
-```bash
-cd problem-4-contract-risk-analyzer
-
-# All datasets already downloaded — use directly
-ls data/cuad/            # 510 contracts, 41 clause types
-ls data/contract_nli/    # NDA entailment dataset
-ls data/ledgar/          # Clause classification (SEC filings)
-```
-
-### What You Get
-```
-data/
-├── cuad/
-│   ├── train-*.parquet     → Contract text + clause annotations
-│   └── test-*.parquet
-├── contract_nli/
-│   ├── train.json          → Hypothesis-premise NLI pairs
-│   └── dev.json
-└── ledgar/
-    └── *.parquet           → Contract clauses + labels
-```
-
-### Quick Start
-```python
-import pandas as pd
-df = pd.read_parquet("data/cuad/", engine="pyarrow")
-print(df.columns.tolist())   # Shows all 41 clause-type columns
-print(f"Contracts: {df['id'].nunique()}")
-```
-
----
-
----
-
-## 🔖 Problem 5 — Privacy-Safe Synthetic Data Generator
-
-**Datasets:** Adult Census Income, Credit Card Fraud, Diabetes (PIMA)
-
-### Prerequisites
-| Requirement | Details |
-|-------------|---------|
-| Kaggle API | Required for Credit Card Fraud and Diabetes datasets |
-
-### Download Steps
-```bash
-cd problem-5-synthetic-data-generator
-
-# Adult Census — already in repo (UCI direct download)
-ls data/adult_census/
-
-# Credit Card Fraud — Kaggle required
-kaggle datasets download -d mlg-ulb/creditcardfraud \
-  -p data/credit_card_fraud --unzip
-
-# Diabetes PIMA — Kaggle required
-kaggle datasets download -d uciml/pima-indians-diabetes-database \
-  -p data/diabetes --unzip
-```
-
-### What You Get
-```
-data/
-├── adult_census/
-│   ├── adult.data          → 32,561 training records (14 features)
-│   ├── adult.test          → 16,281 test records
-│   └── adult.names         → Column descriptions
-├── credit_card_fraud/
-│   └── creditcard.csv      → 284,807 transactions (31 features, 0.17% fraud)
-└── diabetes/
-    └── diabetes.csv        → 768 patient records (8 features)
-```
-
-### Quick Start
-```python
-import pandas as pd
-
-# Load Adult Census
-cols = ['age','workclass','fnlwgt','education','education-num',
-        'marital-status','occupation','relationship','race','sex',
-        'capital-gain','capital-loss','hours-per-week','native-country','income']
-df = pd.read_csv("data/adult_census/adult.data", names=cols, na_values=' ?')
-print(df.head())
-```
-
----
-
----
-
-## 🔖 Problem 6 — Explainable Visual Inspection
-
-**Datasets:** MVTec AD, NEU Surface Defect Database, DAGM 2007
-
-### Prerequisites
-| Requirement | Details |
-|-------------|---------|
-| Kaggle API | Required for NEU Defect and DAGM datasets |
-| HuggingFace | MVTec AD can be downloaded via HuggingFace (free, no login for public version) |
-
-### Download Steps
-```bash
-cd problem-6-visual-inspection
-
-# NEU Surface Defect — Kaggle required
-kaggle datasets download \
-  -d kaustubhdikshit/neu-surface-defect-database \
-  -p data/neu_defect --unzip
-
-# DAGM 2007 — Kaggle required
-kaggle datasets download -d mhkhan27/dagm2007 \
-  -p data/dagm --unzip
-
-# MVTec AD — Large (~5GB), HuggingFace
+# LogHub — free via HuggingFace (no login)
 python -c "
-from huggingface_hub import snapshot_download
-snapshot_download(
-    repo_id='Bingsu/mvtec_anomaly_detection',
-    repo_type='dataset',
-    local_dir='data/mvtec'
-)
+from datasets import load_dataset
+ds = load_dataset('aioha/loghub', 'HDFS')
+ds.save_to_disk('data/loghub/HDFS')
 "
 ```
 
 ### What You Get
 ```
-data/
-├── neu_defect/
-│   ├── train/              → 6 defect types (crazing, inclusion, patches, etc.)
-│   └── test/
-├── dagm/
-│   └── Class*/             → Textured surface images + weak labels
-└── mvtec/                  → 15 categories (bottle, cable, carpet...)
-    ├── bottle/
-    │   ├── train/good/     → Defect-free training images
-    │   └── test/           → Test images (good + defective)
-    └── ...
+challenge-2-network-anomaly-rca/data/
+├── nsl_kdd/
+│   ├── KDDTrain+.txt          → 125K labeled network traffic records (41 features)
+│   └── KDDTest+.txt           → Test set with attack labels
+├── unsw_nb15/
+│   └── UNSW_NB15_*.csv        → Network flows + attack category labels
+└── loghub/
+    ├── HDFS/HDFS.log          → Hadoop Distributed File System logs
+    └── BGL/BGL.log            → BlueGene supercomputer system logs
 ```
-
----
-
----
-
-## 🔖 Problem 7 — Misinformation Detector
-
-**Datasets:** LIAR, FEVER, FakeNewsNet
-
-### Prerequisites
-| Requirement | Details |
-|-------------|---------|
-| None | All datasets already in repo — no login required |
-
-### Download Steps
-```bash
-cd problem-7-misinformation-detector
-
-# All datasets already in the repo — use directly!
-ls data/liar/           # LIAR labeled statements
-ls data/fever/          # FEVER claim verification
-ls data/fakenewsnet/    # FakeNewsNet metadata
-ls data/fake_news_kaggle/  # Additional fake news dataset
-```
-
-### What You Get
-```
-data/
-├── liar/
-│   ├── train.tsv       → 10,269 political statements (6 labels)
-│   ├── valid.tsv       → 1,284 validation statements
-│   └── test.tsv        → 1,267 test statements
-├── fever/
-│   ├── train.jsonl     → 145,449 claims + evidence (SUPPORTS/REFUTES/NEI)
-│   ├── dev.jsonl       → 19,998 dev claims
-│   └── test.jsonl      → 19,998 test claims
-└── fakenewsnet/
-    ├── politifact/     → Real/fake political news metadata
-    └── gossipcop/      → Real/fake celebrity news metadata
-```
-
-### LIAR Label Key
-| Label | Meaning |
-|-------|---------|
-| true | Completely true |
-| mostly-true | Mostly accurate |
-| half-true | Partially true |
-| barely-true | Mostly inaccurate |
-| false | Completely false |
-| pants-fire | Blatantly false |
 
 ### Quick Start
 ```python
 import pandas as pd
-cols = ['id','label','statement','subject','speaker','job',
-        'state','party','barely_true','false','half_true',
-        'mostly_true','pants_fire','context']
-df = pd.read_csv("data/liar/train.tsv", sep="\t", names=cols)
+
+# NSL-KDD
+cols = ['duration','protocol_type','service','flag','src_bytes','dst_bytes',
+        'land','wrong_fragment','urgent','hot','num_failed_logins','logged_in',
+        'num_compromised','root_shell','su_attempted','num_root','num_file_creations',
+        'num_shells','num_access_files','num_outbound_cmds','is_host_login',
+        'is_guest_login','count','srv_count','serror_rate','srv_serror_rate',
+        'rerror_rate','srv_rerror_rate','same_srv_rate','diff_srv_rate',
+        'srv_diff_host_rate','dst_host_count','dst_host_srv_count',
+        'dst_host_same_srv_rate','dst_host_diff_srv_rate','dst_host_same_src_port_rate',
+        'dst_host_srv_diff_host_rate','dst_host_serror_rate','dst_host_srv_serror_rate',
+        'dst_host_rerror_rate','dst_host_srv_rerror_rate','label','difficulty']
+df = pd.read_csv("data/nsl_kdd/KDDTrain+.txt", names=cols)
 print(df['label'].value_counts())
 ```
 
@@ -407,66 +169,178 @@ print(df['label'].value_counts())
 
 ---
 
-## 🔖 Problem 8 — Compliance & Policy Conformance Checker
+## Challenge 3 — Continuous KYC Autonomous Auditor
 
-**Datasets:** EUR-Lex (EU Legislation), PrivacyQA, GDPR Text, OPP-115 Privacy Policies
+**Datasets:** OpenSanctions, OFAC SDN, EU Sanctions, EUR-Lex, PrivacyQA, GDPR Text, OPP-115
 
 ### Prerequisites
 | Requirement | Details |
 |-------------|---------|
-| None | All datasets already in repo — no login required |
+| None | All datasets are freely available — no login required |
 
 ### Download Steps
 ```bash
-cd problem-8-compliance-checker
+cd challenge-3-kyc-autonomous-auditor
 
-# All datasets already in the repo — use directly!
-ls data/eurlex/         # EU legislative documents
-ls data/privacy_qa/    # Privacy policy Q&A
-ls data/gdpr_text/     # GDPR full text (structured JSON)
-ls data/opp115/        # 115 annotated privacy policies
+# OpenSanctions — 100+ government sanction lists (no login)
+python -c "
+import urllib.request, os
+os.makedirs('data/sanctions', exist_ok=True)
+urllib.request.urlretrieve(
+    'https://data.opensanctions.org/datasets/latest/default/targets.simple.csv',
+    'data/sanctions/opensanctions_targets.csv'
+)
+print('Downloaded OpenSanctions')
+"
+
+# OFAC SDN List — US Treasury (no login)
+python -c "
+import urllib.request
+urllib.request.urlretrieve(
+    'https://www.treasury.gov/ofac/downloads/sdn.csv',
+    'data/sanctions/ofac_sdn.csv'
+)
+print('Downloaded OFAC SDN')
+"
+
+# EUR-Lex — HuggingFace (no login)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('coastalcph/lex_glue', 'eurlex')
+ds.save_to_disk('data/eurlex')
+"
+
+# PrivacyQA — HuggingFace (no login)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('allenai/privacy_qa')
+ds.save_to_disk('data/privacy_qa')
+"
+
+# GDPR Full Text — GitHub (no login)
+python -c "
+import urllib.request
+urllib.request.urlretrieve(
+    'https://raw.githubusercontent.com/nickmvincent/gdpr_text/master/gdpr.json',
+    'data/gdpr_text/gdpr.json'
+)
+print('Downloaded GDPR text')
+"
 ```
 
 ### What You Get
 ```
-data/
+challenge-3-kyc-autonomous-auditor/data/
+├── sanctions/
+│   ├── opensanctions_targets.csv  → Entities from 100+ sanction lists (name, dob, nationality, program)
+│   └── ofac_sdn.csv               → US Treasury Specially Designated Nationals list
 ├── eurlex/
-│   └── *.parquet       → 65K EU laws with EUROVOC classification labels
+│   └── *.parquet                  → 65K EU laws with EUROVOC classification labels
 ├── privacy_qa/
-│   ├── train.json      → 1,750 privacy policy Q&A pairs
+│   ├── train.json                 → 1,750 privacy policy Q&A pairs
 │   └── test.json
 ├── gdpr_text/
-│   └── gdpr.json       → Full GDPR text, article-by-article (structured)
+│   └── gdpr.json                  → Full GDPR text, article-by-article (structured JSON)
 └── opp115/
-    └── annotations/    → 115 privacy policies with 10 practice categories
+    └── annotations/               → 115 annotated privacy policies (10 practice categories)
 ```
 
 ### Quick Start
 ```python
-import json
+import pandas as pd
 
-# Load GDPR structured text
-with open("data/gdpr_text/gdpr.json") as f:
-    gdpr = json.load(f)
+# Load OpenSanctions
+df = pd.read_csv("data/sanctions/opensanctions_targets.csv")
+print(f"Total sanctioned entities: {len(df):,}")
+print(df.columns.tolist())
 
-# Access a specific article
-article_5 = gdpr['articles']['5']
-print(article_5['title'])
-print(article_5['text'][:500])
+# Search by name
+hits = df[df['name'].str.contains('Al-Qaeda', case=False, na=False)]
+print(hits[['name','nationality','program','datasets']])
 ```
 
 ---
 
-## ❓ Common Issues
+---
 
-| Problem | Solution |
-|---------|---------|
-| `kaggle: command not found` | Run `pip install kaggle` |
-| `401 Unauthorized` from Kaggle | Check `~/.kaggle/kaggle.json` is present |
-| Large files missing after clone | Run `git lfs pull` |
-| Submodule empty (SROIE) | Run `git submodule update --init --recursive` |
-| `ModuleNotFoundError: datasets` | Run `pip install datasets huggingface_hub` |
+## Challenge 4 — Contract & SOW Risk Analyzer
+
+**Datasets:** CUAD (510 expert-annotated contracts), ContractNLI, LEDGAR (60k+ provisions)
+
+### Prerequisites
+| Requirement | Details |
+|-------------|---------|
+| None | All datasets available via HuggingFace — no login required |
+
+### Download Steps
+```bash
+cd challenge-4-contract-sow-risk-analyzer
+
+# CUAD — 510 contracts, 41 clause types (no login)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('theatricusproject/cuad')
+ds.save_to_disk('data/cuad')
+"
+
+# ContractNLI — NDA clause entailment (no login)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('stanfordnlp/contract_nli')
+ds.save_to_disk('data/contract_nli')
+"
+
+# LEDGAR — 60K+ contract provisions classified (no login)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('coastalcph/lex_glue', 'ledgar')
+ds.save_to_disk('data/ledgar')
+"
+```
+
+### What You Get
+```
+challenge-4-contract-sow-risk-analyzer/data/
+├── cuad/
+│   ├── train-*.parquet    → 510 contracts with 41 clause-type annotations
+│   └── test-*.parquet     → Test split
+├── contract_nli/
+│   ├── train.json         → NDA clause hypothesis-label pairs
+│   └── dev.json           → Validation (Entailment/Contradiction/NotMentioned)
+└── ledgar/
+    └── *.parquet          → 60K+ contract provisions with 83 category labels
+```
+
+### Quick Start
+```python
+from datasets import load_from_disk
+
+# Load CUAD
+ds = load_from_disk("data/cuad")
+sample = ds['train'][0]
+print("Contract:", sample['title'])
+print("Clause types with annotations:", [k for k,v in sample.items() if v and k != 'title'])
+
+# Load ContractNLI
+import json
+with open("data/contract_nli/train.json") as f:
+    nli = json.load(f)
+doc = list(nli['documents'].values())[0]
+print("Hypotheses:", list(doc['annotation_sets'][0]['annotations'].keys())[:3])
+```
 
 ---
 
-*Hyderabad AI Hackathon 2026 — Dataset Guide*
+## Common Issues
+
+| Problem | Solution |
+|---------|----------|
+| `kaggle: command not found` | Run `pip install kaggle` |
+| `401 Unauthorized` from Kaggle | Check `~/.kaggle/kaggle.json` is present |
+| Large files missing after clone | Run `git lfs pull` |
+| `ModuleNotFoundError: datasets` | Run `pip install datasets huggingface_hub` |
+| OpenSanctions CSV encoding issues | Add `encoding='utf-8'` to `pd.read_csv()` |
+
+---
+
+*Hyderabad AI Hackathon 2026 — Participants Dataset Guide*
