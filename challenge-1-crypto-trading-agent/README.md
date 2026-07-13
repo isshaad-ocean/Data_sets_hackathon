@@ -44,4 +44,4 @@ Key Fields: date, coin, sentiment_score (-1 to 1), source (news/twitter), headli
 - Kaggle: Free account + API token
 - HuggingFace: No login
 
-Hyderabad AI Hackathon 2026 - Challenge 1 Dataset
+Tech Mahindra CODE Hackathon - Challenge 1 Dataset

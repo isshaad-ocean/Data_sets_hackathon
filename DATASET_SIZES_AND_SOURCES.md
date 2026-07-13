@@ -1,4 +1,4 @@
-﻿# Dataset Sources & Size Summary — Hyderabad AI Hackathon 2026
+﻿# Dataset Sources & Size Summary — Tech Mahindra CODE Hackathon
 
 Overview of all 4 challenge datasets — original sources, extracted sizes, and download methods.
 
@@ -45,4 +45,4 @@ Overview of all 4 challenge datasets — original sources, extracted sizes, and 
 
 ---
 
-*Hyderabad AI Hackathon 2026 — Dataset Sources*
+*Tech Mahindra CODE Hackathon — Dataset Sources*

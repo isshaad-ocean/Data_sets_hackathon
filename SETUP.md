@@ -1,4 +1,4 @@
-﻿# Environment Setup Guide — Hyderabad AI Hackathon 2026
+﻿# Environment Setup Guide — Tech Mahindra CODE Hackathon
 
 Follow this guide **once** before downloading datasets. Estimated time: 10 minutes.
 
@@ -188,4 +188,4 @@ Expected output:
 
 ---
 
-*Hyderabad AI Hackathon 2026 — Setup Guide*
+*Tech Mahindra CODE Hackathon — Setup Guide*

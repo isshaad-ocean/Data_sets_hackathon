@@ -22,4 +22,4 @@ Build a Network Anomaly Root-Cause Assistant that ingests telemetry, logs, alert
 ## Download
 See [PARTICIPANTS_GUIDE.md](../PARTICIPANTS_GUIDE.md#challenge-2) for full download instructions.
 
-*Hyderabad AI Hackathon 2026 — Challenge 2*
+*Tech Mahindra CODE Hackathon — Challenge 2*

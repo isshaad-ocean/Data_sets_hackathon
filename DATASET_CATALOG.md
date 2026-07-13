@@ -1,4 +1,4 @@
-﻿# Dataset Catalog — Hyderabad AI Hackathon 2026
+﻿# Dataset Catalog — Tech Mahindra CODE Hackathon
 
 Complete reference for all 4 challenge datasets. Includes file sizes, licenses, and credential requirements.
 
@@ -109,4 +109,4 @@ Move-Item "$env:USERPROFILE\Downloads\kaggle.json" "$env:USERPROFILE\.kaggle\kag
 
 ---
 
-*Hyderabad AI Hackathon 2026 — Dataset Catalog*
+*Tech Mahindra CODE Hackathon — Dataset Catalog*

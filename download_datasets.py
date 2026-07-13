@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/env python3
 """
-Hyderabad AI Hackathon 2026 — Master Dataset Downloader
+Tech Mahindra CODE Hackathon — Master Dataset Downloader
 ========================================================
 Downloads datasets for all 4 challenge problem statements.
 
@@ -295,7 +295,7 @@ def verify_downloads():
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Hyderabad AI Hackathon 2026 — Dataset Downloader"
+        description="Tech Mahindra CODE Hackathon — Dataset Downloader"
     )
     parser.add_argument(
         "--challenge", type=int, choices=[1, 2, 3, 4],
@@ -308,7 +308,7 @@ def main():
     args = parser.parse_args()
 
     print("\n" + "="*60)
-    print("  Hyderabad AI Hackathon 2026 — Dataset Downloader")
+    print("  Tech Mahindra CODE Hackathon — Dataset Downloader")
     print("="*60)
     print("  Run with --help for usage options.")
 

@@ -1,4 +1,4 @@
-﻿# Hyderabad AI Hackathon 2026 — Dataset Repository
+﻿# Tech Mahindra CODE Hackathon — Dataset Repository
 
 > **150 participants · 4 challenges · All datasets in one place**
 
@@ -229,4 +229,4 @@ git lfs pull
 
 ---
 
-*Hyderabad AI Hackathon 2026 — maintained for participants*
+*Tech Mahindra CODE Hackathon — maintained for participants*

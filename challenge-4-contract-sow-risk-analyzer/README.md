@@ -22,4 +22,4 @@ Build a contract review system that analyzes complex legal agreements against a 
 ## Download
 No login required. See [PARTICIPANTS_GUIDE.md](../PARTICIPANTS_GUIDE.md#challenge-4) for full instructions.
 
-*Hyderabad AI Hackathon 2026 — Challenge 4*
+*Tech Mahindra CODE Hackathon — Challenge 4*

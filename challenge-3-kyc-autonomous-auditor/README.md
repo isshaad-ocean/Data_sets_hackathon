@@ -26,4 +26,4 @@ Build an autonomous Continuous KYC agent network that monitors high-risk corpora
 ## Download
 No login required. See [PARTICIPANTS_GUIDE.md](../PARTICIPANTS_GUIDE.md#challenge-3) for full instructions.
 
-*Hyderabad AI Hackathon 2026 — Challenge 3*
+*Tech Mahindra CODE Hackathon — Challenge 3*

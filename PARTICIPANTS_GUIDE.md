@@ -1,4 +1,4 @@
-﻿# Participants Dataset Guide — Hyderabad AI Hackathon 2026
+﻿# Participants Dataset Guide — Tech Mahindra CODE Hackathon
 
 This guide explains exactly how to download and access datasets for each of the 4 challenge problem statements.
 Follow only the section for your assigned challenge.
@@ -343,4 +343,4 @@ print("Hypotheses:", list(doc['annotation_sets'][0]['annotations'].keys())[:3])
 
 ---
 
-*Hyderabad AI Hackathon 2026 — Participants Dataset Guide*
+*Tech Mahindra CODE Hackathon — Participants Dataset Guide*
